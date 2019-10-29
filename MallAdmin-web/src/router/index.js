@@ -302,35 +302,6 @@ export const constantRouterMap = [
     ]
   },
   {
-    path:'/zms',
-    component: Layout,
-    // redirect: '/zms',
-    name: 'zms',
-    meta: {title: '商学院', icon: 'zms'},
-    children: [
-      {
-        path: 'flash',
-        name: 'flash',
-        component: () => import('@/views/zms/index'),
-        meta: {title: '商学院管理', icon: 'zms'},
-
-       
-      },
-      
-      {
-        path: 'hot',
-        name: 'homeHot',
-        component: () => import('@/views/sms/hot/index'),
-        meta: {title: '人气推荐', icon: 'sms-hot'},
-
-      },
-    
-    
-
-     
-    ]
-  },
-  {
     path:'/qx',
     component: Layout,
     // redirect: '/zms',
@@ -342,9 +313,49 @@ export const constantRouterMap = [
         name: 'qx',
         component: () => import('@/views/qx/index'),
         meta: {title: '权限', icon: 'tree'},
-
-       
-      },   
+      }  
+    ]
+  },
+  {
+    path:'/zms',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'zms',
+    meta: {title: '商学院', icon: 'zms'},
+    children: [
+      {
+        path: 'video',
+        name: 'video',
+        component: () => import('@/views/zms/video/index'),
+        meta: {title: '视频管理', icon: 'zms'}
+      },
+      {
+        path: 'copywriting',
+        name: 'copywriting',
+        component: () => import('@/views/zms/copywriting/pages'),
+        meta: {title: '文案管理', icon: 'zms'}
+      },
+    ]
+  },
+  {
+    path:'/tms',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'tms',
+    meta: {title: '发现模块', icon: 'zms'},
+    children: [
+      {
+        path: 'video',
+        name: 'video',
+        component: () => import('@/views/tms/video/index'),
+        meta: {title: '视频管理', icon: 'zms'}
+      },
+      {
+        path: 'copywriting',
+        name: 'copywriting',
+        component: () => import('@/views/tms/copywriting/pages'),
+        meta: {title: '文案管理', icon: 'zms'}
+      },
     ]
   },
   {
@@ -364,23 +375,6 @@ export const constantRouterMap = [
       },   
     ]
   },
-  // {
-  //   path:'/advertising',
-  //   component: Layout,
-  //   // redirect: '/zms',
-  //   name: 'advertising',
-  //   meta: {title: '广告', icon: 'example'},
-  //   children: [
-  //     {
-  //       path: 'advertising',
-  //       name: 'advertising',
-  //       component: () => import('@/views/advertising/index'),
-  //       meta: {title: '广告', icon: 'example'},
-
-       
-  //     },   
-  //   ]
-  // },
   {
     path:'/user',
     component: Layout,

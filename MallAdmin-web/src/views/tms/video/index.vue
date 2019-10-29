@@ -29,7 +29,7 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">添加活动</el-button>
+      <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">视频上传</el-button>
       <!-- <el-button size="mini" class="btn-add" @click="handleShowSessionList()">秒杀时间段列表</el-button> -->
     </el-card>
     <div class="table-container">
@@ -104,6 +104,7 @@
         <el-form-item label="视频标题：">
           <el-input v-model="flashPromotion.title" style="width: 250px"></el-input>
         </el-form-item>
+           <el-form-item label="上传视频：">
         <el-upload class="avatar-uploader el-upload--text"
                                :action="uploadUrl" 
                                :show-file-list="false"
@@ -111,15 +112,15 @@
                                :on-success="handleVideoSuccess"  
                                :before-upload="beforeUploadVideo" 
                                :on-progress="uploadVideoProcess"> 
-                        <!-- <video v-if="this.global.company.showVideoPath !='' && !videoFlag"  
+                        <!-- <video v-if="this.flashPromotion.showVideoPath !='' && !videoFlag"  
                         this.global.company.showVideoPath
-                               
+                                :src="this.flashPromotion.showVideoPath" 
                                class="avatar video-avatar"
                                controls="controls">您的浏览器不支持视频播放</video>  -->
-                            
-                        <!-- <i v-else-if="this.global.company.showVideoPath =='' && !videoFlag"
-                           class="el-icon-plus avatar-uploader-icon"></i>   -->
-                           <!-- :src="this.global.company.showVideoPath"  -->
+<!--                             
+                         <i v-else-if="this.flashPromotion.showVideoPath =='' && !videoFlag"
+                           class="el-icon-plus avatar-uploader-icon"></i>    --> -->
+                           
                         <el-progress v-if="videoFlag == true"
                                      type="circle"
                                      :percentage="videoUploadPercent"
@@ -130,6 +131,7 @@
                                    v-if="isShowUploadVideo"
                                    type="primary">选取文件</el-button>
                     </el-upload>
+                       </el-form-item>
                     <P v-if="isShowUploadVideo"
                        class="text">请保证视频格式正确，且不超过20M</P>
       </el-form>
@@ -247,8 +249,8 @@
             this.videoFlag = false;
             this.videoUploadPercent = 0;
             if (res.errorCode == "00") {
-                // this.global.company.showVideoPath = res.sprbody.urlAddress;
-                // this.videoForm.showVideoPath = res.data.uploadUrl;
+                this.flashPromotion.showVideoPath = res.sprbody.urlAddress;
+                this.videoForm.showVideoPath = res.data.uploadUrl;
             } else {
                 this.$message.error('视频上传失败，请重新上传！');
             }
@@ -334,6 +336,34 @@
     }
   }
 </script>
-<style></style>
+<style>
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
+.video-avatar {
+  width: 400px;
+  height: 200px;
+}
+</style>
 
 
