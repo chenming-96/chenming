@@ -330,6 +330,50 @@ export const constantRouterMap = [
      
     ]
   },
+  {
+    path:'/qx',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'qx',
+    meta: {title: '权限', icon: 'qx'},
+    children: [
+      {
+        path: 'qx',
+        name: 'qx',
+        component: () => import('@/views/qx/index'),
+        meta: {title: '权限管理', icon: 'tree'},
+
+       
+      },   
+    ]
+  },
+  {
+    path:'/user',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'user',
+    meta: {title: '用户', icon: 'user'},
+    children: [
+      {
+        path: 'userList',
+        name: 'userList',
+        component: () => import('@/views/user/index'),
+        meta: {title: '用户列表', icon: 'user'},
+      },
+      {
+        path: 'userGrade',
+        name: 'userGrade',
+        component: () => import('@/views/user/index'),
+        meta: {title: '用户等级', icon: 'total-week'},
+      },
+      {
+        path: 'userFK',
+        name: 'userFK',
+        component: () => import('@/views/user/index'),
+        meta: {title: '用户反馈', icon: 'user'},
+      },
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ]
 
