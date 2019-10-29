@@ -301,6 +301,35 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path:'/zms',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'zms',
+    meta: {title: '商学院', icon: 'zms'},
+    children: [
+      {
+        path: 'flash',
+        name: 'flash',
+        component: () => import('@/views/zms/index'),
+        meta: {title: '商学院管理', icon: 'zms'},
+
+       
+      },
+      
+      {
+        path: 'hot',
+        name: 'homeHot',
+        component: () => import('@/views/sms/hot/index'),
+        meta: {title: '人气推荐', icon: 'sms-hot'},
+
+      },
+    
+    
+
+     
+    ]
+  },
   {path: '*', redirect: '/404', hidden: true}
 ]
 
