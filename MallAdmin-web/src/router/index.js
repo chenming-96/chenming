@@ -341,12 +341,46 @@ export const constantRouterMap = [
         path: 'qx',
         name: 'qx',
         component: () => import('@/views/qx/index'),
-        meta: {title: '权限管理', icon: 'tree'},
+        meta: {title: '权限', icon: 'tree'},
 
        
       },   
     ]
   },
+  {
+    path:'/system',
+    component: Layout,
+    // redirect: '/zms',
+    name: 'system',
+    meta: {title: '系统', icon: 'example'},
+    children: [
+      {
+        path: 'system',
+        name: 'system',
+        component: () => import('@/views/system/index'),
+        meta: {title: '系统', icon: 'example'},
+
+       
+      },   
+    ]
+  },
+  // {
+  //   path:'/advertising',
+  //   component: Layout,
+  //   // redirect: '/zms',
+  //   name: 'advertising',
+  //   meta: {title: '广告', icon: 'example'},
+  //   children: [
+  //     {
+  //       path: 'advertising',
+  //       name: 'advertising',
+  //       component: () => import('@/views/advertising/index'),
+  //       meta: {title: '广告', icon: 'example'},
+
+       
+  //     },   
+  //   ]
+  // },
   {
     path:'/user',
     component: Layout,
