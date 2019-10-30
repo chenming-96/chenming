@@ -521,12 +521,11 @@
 </template>
 <script type="text/babel">
   import merge from 'element-ui/src/utils/merge';
-
   import panel from "../../components/jurisdiction/panel.vue"
   import selectTree from "../../components/jurisdiction/selectTree.vue"
   import treeter from "../../components/jurisdiction/treeter.js"
-  import * as api from "../../components/jurisdiction/api.js"
   import * as sysApi from '../../components/jurisdiction/sys.js'
+  // import * as sysApi from '../../utils/index.js'
 
   export default {
     mixins: [ treeter ],
@@ -585,7 +584,7 @@
         };
       },
       deleteSelected(){
-        this.$http.get(api.SYS_MENU_DELETE + "?menuIds=" + this.form.id)
+        this.$http.get("./Vue-Admin/sys/menu/delete" + "?menuIds=" + this.form.id)
           .then(res => {
             this.$message('操作成功');
             this.deleteFromTree(this.menuTree, this.form.id);
@@ -607,7 +606,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$http.get(api.SYS_MENU_DELETE + "?menuIds=" + checkKeys.join(','))
+          this.$http.get("./Vue-Admin/sys/menu/delete" + "?menuIds=" + checkKeys.join(','))
             .then(res => {
               this.$message('操作成功');
               this.load();
@@ -623,7 +622,7 @@
       },
       onSubmit(){
         if (this.form.id == null) {
-          this.$http.post(api.SYS_MENU_ADD, this.form)
+          this.$http.post("./Vue-Admin/sys/menu/add", this.form)
             .then(res => {
               this.$message('操作成功');
               this.form.id = res.data.id;
@@ -649,7 +648,7 @@
             this.menuTree.pop();
           })
         } else {
-          this.$http.post(api.SYS_MENU_UPDATE, this.form)
+          this.$http.post("./Vue-Admin/sys/menu/update", this.form)
             .then(res => {
               this.$message('操作成功');
               this.updateTreeNode(this.menuTree, res.data);

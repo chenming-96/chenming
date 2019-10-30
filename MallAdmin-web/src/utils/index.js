@@ -52,3 +52,18 @@ export function formatTime(time, option) {
     return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
   }
 }
+
+//我用到的
+import defaultValue from "../components/jurisdiction/default.js";
+export function menuList (params) {
+  return new Promise((resolve, reject) => {
+    axios.get("./Vue-Admin/sys/menu/list", { params }).then(response => {
+      resolve(response.data);
+    }, err => {
+      resolve(defaultValue.menuList);
+    })
+      .catch((error) => {
+        resolve(defaultValue.menuList)
+      })
+  })
+}
