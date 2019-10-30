@@ -51,13 +51,13 @@ export default {
       default: false
     }
   },
-  // created(){
-  //     this.read();
-  //   },
+  created(){
+      this.read();
+    },
   methods: {
-    // read(){
-    //   console.log(this.routes)
-    // },
+    read(){
+      console.log(this.routes)
+    },
     hasOneShowingChildren(children) {
       const showingChildren = children.filter(item => {
         return !item.hidden
