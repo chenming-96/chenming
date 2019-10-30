@@ -1,6 +1,7 @@
 <template>
   <div style="margin-top: 50px">
-    <el-form :model="value" :rules="rules" ref="productInfoForm" label-width="120px" style="width: 600px" size="small">
+    <el-form :model="value"  ref="productInfoForm" label-width="120px" style="width: 600px" size="small">
+      <!-- <div>:rules="rules"</div> -->
       <el-form-item label="商品分类：" prop="productCategoryId">
         <el-cascader
           v-model="selectProductCateValue"
@@ -83,17 +84,17 @@
         selectProductCateValue: [],
         productCateOptions: [],
         brandOptions: [],
-        rules: {
-          name: [
-            {required: true, message: '请输入商品名称', trigger: 'blur'},
-            {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
-          ],
-          subTitle: [{required: true, message: '请输入商品副标题', trigger: 'blur'}],
-          productCategoryId: [{required: true, message: '请选择商品分类', trigger: 'blur'}],
-          brandId: [{required: true, message: '请选择商品品牌', trigger: 'blur'}],
-          description: [{required: true, message: '请输入商品介绍', trigger: 'blur'}],
-          requiredProp: [{required: true, message: '该项为必填项', trigger: 'blur'}]
-        }
+        // rules: {
+        //   name: [
+        //     {required: true, message: '请输入商品名称', trigger: 'blur'},
+        //     {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
+        //   ],
+        //   subTitle: [{required: true, message: '请输入商品副标题', trigger: 'blur'}],
+        //   productCategoryId: [{required: true, message: '请选择商品分类', trigger: 'blur'}],
+        //   brandId: [{required: true, message: '请选择商品品牌', trigger: 'blur'}],
+        //   description: [{required: true, message: '请输入商品介绍', trigger: 'blur'}],
+        //   requiredProp: [{required: true, message: '该项为必填项', trigger: 'blur'}]
+        // }
       };
     },
     created() {
